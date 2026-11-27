@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>KiwiKids — Kids Activewear</title>
+    <script>
+      // GitHub Pages has no server-side router, so it serves this file for any
+      // path it doesn't recognize as a real file. Re-encode the path into a query
+      // string and redirect to index.html, where the matching script in
+      // index.html decodes it back before React Router mounts.
+      // Pattern: https://github.com/rafgraph/spa-github-pages
+      var segmentsToKeep = 1; // keep "/dima-kiwi" (the project page base path)
+      var l = window.location;
+      l.replace(
+        l.protocol +
+          "//" +
+          l.hostname +
+          (l.port ? ":" + l.port : "") +
+          l.pathname
+            .split("/")
+            .slice(0, 1 + segmentsToKeep)
+            .join("/") +
+          "/?/" +
+          l.pathname
+            .slice(1)
+            .split("/")
+            .slice(segmentsToKeep)
+            .join("/")
+            .replace(/&/g, "~and~") +
+          (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+          l.hash,
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

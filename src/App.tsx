@@ -8,7 +8,7 @@ export function App() {
   return (
     <ErrorBoundary>
       <StoreProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/:lang" element={<LocalizedHome />} />
