@@ -39,7 +39,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
             (v): v is string => typeof v === "string" && products.some((p) => p.id === v),
           ),
         );
-    } catch {}
+    } catch {
+      // Corrupted localStorage: fall back to an empty cart/wishlist.
+    }
     setReady(true);
   }, []);
   useEffect(() => {
