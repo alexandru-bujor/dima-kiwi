@@ -21,12 +21,7 @@ jobs:
           node-version: 22
           cache: npm
 
-      # npm ci (not install) would normally be preferred, but package-lock.json was generated on
-      # Windows and only pins the win32 optional native binaries for rolldown/tailwindcss-oxide/
-      # lightningcss, not the linux-x64-gnu ones this runner needs — npm ci leaves those missing
-      # (they're optional, so it doesn't error) and the native-dependent build step then fails.
-      # npm install reconciles against the current platform and fetches the right binaries.
-      - run: npm install
+      - run: npm ci
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
